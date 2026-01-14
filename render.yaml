@@ -1,0 +1,18 @@
+# Render 配置文件
+# 使用这个文件可以更简单地配置 Render 服务
+
+services:
+  - type: web
+    name: hatgenerator-backend
+    env: node
+    region: singapore  # 可选：singapore, oregon, frankfurt, etc.
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # 注意：GEMINI_API_KEY 和 CORS_ORIGIN 需要在 Render 控制台手动配置
+      # 因为包含敏感信息，不应该提交到代码库
